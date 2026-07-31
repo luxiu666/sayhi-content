@@ -1,0 +1,12 @@
+{
+  "name": "sayhi-content-generator",
+  "version": "1.0.0",
+  "description": "SayHi 听力/对话内容每日生成脚本（GitHub Actions，无服务器）",
+  "private": true,
+  "scripts": {
+    "generate": "node generate.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

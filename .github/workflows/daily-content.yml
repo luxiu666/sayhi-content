@@ -1,0 +1,75 @@
+name: 每日生成听力内容
+
+on:
+  # 每天北京时间凌晨 2:00 运行（UTC 18:00）
+  schedule:
+    - cron: '0 18 * * *'
+  # 允许在 GitHub 网页上手动点击运行
+  workflow_dispatch:
+
+# 允许 workflow 提交内容并发布 Pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily-content
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 安装 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 生成今日内容
+        working-directory: content-generator
+        env:
+          GLM_API_KEY: ${{ secrets.GLM_API_KEY }}
+          DAILY_DIALOGUE_COUNT: '5'
+          DAILY_PRON_COUNT: '1'
+        run: node generate.js
+
+      - name: 提交更新后的内容
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content-generator/content/*.json
+          if git diff --staged --quiet; then
+            echo "内容无变化，跳过提交"
+          else
+            git commit -m "chore: 每日听力内容更新 $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+  deploy-pages:
+    needs: generate
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 检出仓库（含最新提交）
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: 配置 Pages
+        uses: actions/configure-pages@v5
+
+      - name: 上传内容目录为 Pages 制品
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # 只发布生成的静态 JSON 目录
+          path: content-generator/content
+
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

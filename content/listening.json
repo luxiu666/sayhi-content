@@ -1,0 +1,47 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "07/31 A Chat at the Coffee Shop",
+      "titleZh": "07/31 咖啡厅偶遇",
+      "category": "每日泛听",
+      "tag": "日常对话",
+      "subTag": "咖啡厅",
+      "subTagIcon": "☕",
+      "source": "AI Dialogue",
+      "level": "中级",
+      "contentType": "dialogue",
+      "paragraphs": [
+        { "en": "Emma: Hi! I haven't seen you in ages. How have you been?", "zh": "Emma: 嗨！好久不见，你最近怎么样？" },
+        { "en": "Jack: I've been great, thanks! Just grabbing a coffee before work. What about you?", "zh": "Jack: 我很好，谢谢！上班前来杯咖啡。你呢？" },
+        { "en": "Emma: Same here. I come to this cafe almost every morning now.", "zh": "Emma: 我也是。现在我几乎每天早上都来这家咖啡馆。" },
+        { "en": "Jack: It's such a cozy place. Their lattes are the best in town.", "zh": "Jack: 这地方很温馨。他们的拿铁是全城最好喝的。" },
+        { "en": "Emma: Totally agree. We should catch up properly sometime soon.", "zh": "Emma: 完全同意。我们改天应该好好聚聚。" },
+        { "en": "Jack: Definitely. Let's grab lunch this weekend. I'll text you.", "zh": "Jack: 一定。这周末一起吃午饭吧，我给你发消息。" }
+      ],
+      "extraData": {
+        "speakers": ["Emma", "Jack"],
+        "lines": [
+          { "speaker": "Emma", "en": "Hi! I haven't seen you in ages. How have you been?", "zh": "嗨！好久不见，你最近怎么样？" },
+          { "speaker": "Jack", "en": "I've been great, thanks! Just grabbing a coffee before work. What about you?", "zh": "我很好，谢谢！上班前来杯咖啡。你呢？" },
+          { "speaker": "Emma", "en": "Same here. I come to this cafe almost every morning now.", "zh": "我也是。现在我几乎每天早上都来这家咖啡馆。" },
+          { "speaker": "Jack", "en": "It's such a cozy place. Their lattes are the best in town.", "zh": "这地方很温馨。他们的拿铁是全城最好喝的。" },
+          { "speaker": "Emma", "en": "Totally agree. We should catch up properly sometime soon.", "zh": "完全同意。我们改天应该好好聚聚。" },
+          { "speaker": "Jack", "en": "Definitely. Let's grab lunch this weekend. I'll text you.", "zh": "一定。这周末一起吃午饭吧，我给你发消息。" }
+        ],
+        "keyPhrases": [
+          { "phrase": "in ages", "meaning": "很久" },
+          { "phrase": "catch up", "meaning": "叙旧、聊近况" }
+        ],
+        "scenario": "running into an old friend at a coffee shop"
+      },
+      "wordCount": 62,
+      "source": "AI Dialogue",
+      "coverIcon": "bubble.left.and.bubble.right.fill",
+      "coverColor": "#667EEA",
+      "playCount": 0,
+      "publishDate": "2026-07-31"
+    }
+  ],
+  "nextId": 2
+}
