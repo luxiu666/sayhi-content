@@ -27,10 +27,9 @@ jobs:
       - name: 安装 Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: 生成今日内容
-        working-directory: content-generator
         env:
           GLM_API_KEY: ${{ secrets.GLM_API_KEY }}
           DAILY_DIALOGUE_COUNT: '5'
@@ -41,7 +40,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add content-generator/content/*.json
+          git add content/*.json
           if git diff --staged --quiet; then
             echo "内容无变化，跳过提交"
           else
@@ -68,7 +67,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # 只发布生成的静态 JSON 目录
-          path: content-generator/content
+          path: content
 
       - name: 部署到 GitHub Pages
         id: deployment

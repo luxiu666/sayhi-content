@@ -35,19 +35,11 @@ content-generator/
 - 可以选 **Public**（Pages 免费）或 **Private**（Private 也支持 Pages）
 
 ### 2. 上传本目录内容
-把整个 `content-generator/` 目录传到仓库，并且**把 workflow 配置放到正确位置**：
+把本目录的文件传到仓库**根目录**（`generate.js`、`generators.js`、`content/`、
+`.github/workflows/daily-content.yml` 都在仓库根）。
 
-```bash
-# 在仓库根目录：
-mkdir -p .github/workflows
-cp content-generator/.github-workflow-daily-content.yml .github/workflows/daily-content.yml
-git add .
-git commit -m "init: 内容生成器"
-git push
-```
-
-> ⚠️ 关键：GitHub Actions 只识别 `.github/workflows/` 目录下的 `.yml` 文件，
-> 所以必须把 `.github-workflow-daily-content.yml` 移动/复制成 `.github/workflows/daily-content.yml`。
+> 注意：workflow 已配置为在仓库**根目录**运行 `node generate.js`，
+> 内容输出到根目录的 `content/` 下。
 
 ### 3. 配置 GLM API Key（加密存储，不进代码）
 - 仓库 → Settings → Secrets and variables → Actions → New repository secret
